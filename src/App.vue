@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import NotCompleteInfo from './components/NotCompleteInfo.vue';
+
 </script>
 
 <template>
@@ -20,11 +22,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container">
         <span class="navbar-brand">To Do Harinjara</span>
-        <div class="text-white">
-          <div class="alert alert-warning mb-0 ms-3" role="alert">
-            Number of not completed tasks : <span class="badge text-bg-danger fs-6">2</span>
-          </div>
-        </div>
+        <NotCompleteInfo></NotCompleteInfo>
         <button
           class="navbar-toggler"
           type="button"

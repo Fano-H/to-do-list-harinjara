@@ -16,7 +16,12 @@ function recordTask() {
   if (taskTitle.value === '') {
     return
   }
-  
+  tasksStore.addTask({
+    title: taskTitle.value,
+    details: taskDetails.value,
+    isComplete: false
+  })
+  resetForm()
 }
 </script>
 
@@ -25,7 +30,7 @@ function recordTask() {
     class="w-50 bg-secondary text-white p-5 rounded rounded-4 shadow mx-auto border border-dark border-3"
   >
     <div class="mb-3">
-      <label class="form-label">Enter task title {{ tasksStore.toto }}</label>
+      <label class="form-label">Enter task title</label>
       <input type="text" class="form-control" v-model.trim="taskTitle" />
     </div>
     <div class="mb-3">
