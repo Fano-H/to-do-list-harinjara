@@ -17,7 +17,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header> -->
   <header class="header sticky-top">
-    <nav class="navbar  navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container">
         <span class="navbar-brand">To Do Harinjara</span>
         <div class="text-white">
@@ -25,7 +25,15 @@ import HelloWorld from './components/HelloWorld.vue'
             Number of not completed tasks : <span class="badge text-bg-danger fs-6">2</span>
           </div>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNavDropdown">
@@ -46,13 +54,10 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <main class="main-content pt-4">
-      <div class="container">
-        <RouterView />
-      </div>
+    <div class="container">
+      <RouterView />
+    </div>
   </main>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
