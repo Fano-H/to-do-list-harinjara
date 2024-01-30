@@ -1,8 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import NotCompleteInfo from './components/NotCompleteInfo.vue';
-
+import NotCompleteInfo from './components/NotCompleteInfo.vue'
 </script>
 
 <template>
