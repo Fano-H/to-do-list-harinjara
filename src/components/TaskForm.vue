@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useTasksStore } from '@/stores/tasks'
+import {customAlphabet} from 'nanoid'
 
 const tasksStore = useTasksStore()
 
@@ -16,7 +17,10 @@ function recordTask() {
   if (taskTitle.value === '') {
     return
   }
+  let nanoId = customAlphabet('1234567890abcdef', 12)
+
   tasksStore.addTask({
+    id: nanoId(),
     title: taskTitle.value,
     details: taskDetails.value,
     isComplete: false
