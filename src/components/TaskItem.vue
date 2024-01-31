@@ -16,7 +16,9 @@ defineProps({
           {{ task.details }}
         </p>
         <div class="text-start">
-          <button class="btn btn-secondary btn-sm me-2 px-4">Edit</button>
+          <button class="btn btn-secondary btn-sm me-2 px-4" @click="$emit('editTask')">
+            Edit
+          </button>
           <button class="btn btn-primary btn-sm me-2 px-4">Complete</button>
           <button class="btn btn-dark btn-sm px-4">Delete</button>
         </div>
