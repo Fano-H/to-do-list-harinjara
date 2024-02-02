@@ -61,17 +61,16 @@ defineExpose({
         </div>
         <div class="modal-body">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="titleField" v-model="theTaskToEdit.title">
+            <input type="text" class="form-control" id="titleField" v-model.lazy="theTaskToEdit.title">
             <label for="titleField">Title</label>
           </div>
           <div class="form-floating">
-            <textarea class="form-control" id="detailsField" v-model="theTaskToEdit.details"></textarea>
+            <textarea class="form-control" id="detailsField" v-model.lazy="theTaskToEdit.details"></textarea>
             <label for="detailsField">Details</label>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary mx-auto" data-bs-dismiss="modal">Finish editing and/or close</button>
         </div>
       </div>
     </div>
