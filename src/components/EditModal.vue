@@ -1,21 +1,53 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { Modal } from 'bootstrap'
+import { useTasksStore } from '@/stores/tasks'
 
+const props = defineProps({
+  idOfTaskToEdit: {
+    type: [Number,String],
+    required: true
+  }
+})
+
+const tasksStore = useTasksStore()
+
+const theTaskToEdit = ref({title:"", details:""})
+
+/**
+ * The modal HTML element
+*/
 const editModalElement = ref(null)
+
+/**
+ * The future modal bs object when mounted
+*/
 let editModal = null
 
 onMounted(() => {
   editModal = new Modal(editModalElement.value)
+
+  editModalElement.value.addEventListener('shown.bs.modal', onModalShown)
+  editModalElement.value.addEventListener('hidden.bs.modal', onModalHide)
+
 })
 
 function showModal() {
   editModal.show()
 }
 
+function onModalShown(evt){
+  theTaskToEdit.value = tasksStore.getTaskById(props.idOfTaskToEdit).theTask
+}
+
+function onModalHide(){
+  theTaskToEdit.value = {title:"", details:""}
+}
+
 defineExpose({
   showModal
 })
+
 </script>
 
 <template>
@@ -24,10 +56,19 @@ defineExpose({
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5">Modal title</h1>
+          <h1 class="modal-title fs-5">Edit the task</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">...</div>
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="titleField" v-model="theTaskToEdit.title">
+            <label for="titleField">Title</label>
+          </div>
+          <div class="form-floating">
+            <textarea class="form-control" id="detailsField" v-model="theTaskToEdit.details"></textarea>
+            <label for="detailsField">Details</label>
+          </div>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button>
@@ -36,3 +77,9 @@ defineExpose({
     </div>
   </div>
 </template>
+
+<style scoped>
+  #detailsField{
+    min-height: 100px;
+  }
+</style>

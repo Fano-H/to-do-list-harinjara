@@ -10,5 +10,26 @@ export const useTasksStore = defineStore('tasks', () => {
   function addTask(newTask) {
     tasks.value.push(newTask)
   }
-  return { tasks, tasksNumber, tasksNotComplete, tasksNotCompleteNumber, addTask }
+
+  
+  /**
+   * Search for a task by its ID
+   * and return it and its index in the array
+   */
+  function getTaskById(taskID){
+    let theTaskIndex = null
+    let theTask = tasks.value.find(
+        (task, idx) => {
+          if ( task.id === taskID ){
+            theTaskIndex = idx
+            return true
+          }
+        }
+    )
+    
+    return {theTaskIndex, theTask}
+  }
+
+
+  return { tasks, tasksNumber, tasksNotComplete, tasksNotCompleteNumber, addTask, getTaskById }
 })

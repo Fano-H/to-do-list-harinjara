@@ -6,12 +6,19 @@ import { ref } from 'vue'
 
 const tasksStore = useTasksStore()
 
+/**
+ * The modal component element
+*/
 const editionModal = ref(null)
 
-function openModal() {
+const idOfTaskToEdit = ref('')
+
+function openModal(taskID) {
+  idOfTaskToEdit.value = taskID
   editionModal.value.showModal()
 }
 </script>
+
 <template>
   <div class="tasks-list">
     <div class="row">
@@ -22,6 +29,6 @@ function openModal() {
         @edit-task="openModal"
       ></TaskItem>
     </div>
-    <EditModal ref="editionModal"></EditModal>
+    <EditModal ref="editionModal" :idOfTaskToEdit="idOfTaskToEdit"></EditModal>
   </div>
 </template>
