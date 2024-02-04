@@ -1,14 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import TaskForm from '@/components/TaskForm.vue'
-import MessageModal from '@/components/MessageModal.vue';
+import MessageModal from '@/components/MessageModal.vue'
 
 const messagingModal = ref('')
 
-function onTaskCreated(){
+function onTaskCreated() {
   messagingModal.value.showModal()
 }
-
 </script>
 
 <template>

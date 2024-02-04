@@ -27,18 +27,18 @@ function completeTask() {
           {{ task.details }}
         </p>
         <div class="text-start">
-          <button class="btn btn-secondary btn-sm me-2 px-4" @click="$emit('editTask', task.id)">
-            Edit
+          <button class="btn btn-secondary btn-sm me-1 px-3" @click="$emit('editTask', task.id)">
+            <font-awesome-icon icon="edit" /> Edit
           </button>
           <button
-            class="btn btn-primary btn-sm me-2 px-4"
+            class="btn btn-primary btn-sm me-1 px-3"
             @click="completeTask"
             :disabled="task.isComplete"
           >
-            {{ task.isComplete ? "Completed" : "Complete" }}
+            <font-awesome-icon icon="check" /> {{ task.isComplete ? 'Completed' : 'Complete' }}
           </button>
           <button
-            class="btn btn-dark btn-sm px-4"
+            class="btn btn-dark btn-sm px-3"
             @click="
               $emit(
                 'deleteTask',
@@ -48,7 +48,7 @@ function completeTask() {
               )
             "
           >
-            Delete
+            <font-awesome-icon icon="close" /> Delete
           </button>
         </div>
       </div>
@@ -61,7 +61,7 @@ function completeTask() {
   opacity: 0.3;
 }
 
-.details-content{
-  white-space: pre-line
+.details-content {
+  white-space: pre-line;
 }
 </style>

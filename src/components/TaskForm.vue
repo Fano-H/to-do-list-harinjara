@@ -47,9 +47,11 @@ function recordTask() {
 
     <div class="mt-5 text-center">
       <button type="button" class="btn btn-primary me-2" v-on:click="recordTask">
-        Create the task
+        <font-awesome-icon icon="check" /> Create the task
       </button>
-      <button type="button" class="btn btn-danger" v-on:click="resetForm">Cancel</button>
+      <button type="button" class="btn btn-danger" v-on:click="resetForm">
+        <font-awesome-icon icon="close" /> Cancel
+      </button>
     </div>
   </div>
 </template>

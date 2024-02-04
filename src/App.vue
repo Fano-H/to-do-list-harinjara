@@ -23,10 +23,14 @@ import NotCompleteInfo from './components/NotCompleteInfo.vue'
         <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <RouterLink to="/new-task" class="nav-link">Create new task</RouterLink>
+              <RouterLink to="/new-task" class="nav-link"
+                ><font-awesome-icon icon="pen-to-square" /> Create new task</RouterLink
+              >
             </li>
             <li class="nav-item">
-              <RouterLink to="/tasks" class="nav-link">See all tasks</RouterLink>
+              <RouterLink to="/tasks" class="nav-link"
+                ><font-awesome-icon icon="tasks" /> See all tasks</RouterLink
+              >
             </li>
           </ul>
         </div>

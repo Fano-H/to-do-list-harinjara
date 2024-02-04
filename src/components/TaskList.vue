@@ -67,13 +67,28 @@ function proceedDeleting() {
         @delete-task="deleteConfirmation"
       ></TaskItem>
     </div>
-    <div v-else class="w-50 mx-auto">
+    <div v-else class="w-75 mx-auto">
       <div class="alert alert-info" role="alert">
-        <p class="fs-6 text-center">
-          There is no task yet.<br><br>
-          Create tasks by going on the <RouterLink to="/new-task" class="fw-bold text-decoration-none">create new task</RouterLink> panel.
-        </p>
+        <div class="row">
+        
+          <div class="col-12 col-lg-9">
+              <p class="fs-6 text-center">
+                There is no task yet.<br /><br />
+                Create tasks by going on the
+                <RouterLink to="/new-task" class="fw-bold text-decoration-none"
+                  >create new task</RouterLink
+                >
+                panel.
+              </p>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="d-flex justify-content-center align-items-center fs-1 h-100">
+              <font-awesome-icon icon="info-circle" />
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
     <EditModal
       ref="editionModal"
