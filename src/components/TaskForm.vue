@@ -42,7 +42,7 @@ function recordTask() {
     </div>
     <div class="mb-3">
       <label class="form-label">Enter task content</label>
-      <textarea class="form-control" rows="2" v-model.trim="taskDetails"></textarea>
+      <textarea class="form-control" rows="4" v-model.trim="taskDetails"></textarea>
     </div>
 
     <div class="mt-5 text-center">

@@ -38,6 +38,24 @@ export const useTasksStore = defineStore('tasks', () => {
     tasks.value.splice(theTaskIndex, 1)
   }
 
+  /**
+   * Init tasks data against localstorage
+   */
+  function initTasksData() {
+    if (localStorage.getItem('to-do-tasks') === null) {
+      localStorage.setItem('to-do-tasks', JSON.stringify([]))
+    } else {
+      tasks.value = JSON.parse(localStorage.getItem('to-do-tasks'))
+    }
+  }
+
+  /**
+   * update the tasks data in localstorage
+   */
+  function updateTasksData() {
+    localStorage.setItem('to-do-tasks', JSON.stringify(tasks.value))
+  }
+
   return {
     tasks,
     tasksNumber,
@@ -45,6 +63,8 @@ export const useTasksStore = defineStore('tasks', () => {
     tasksNotCompleteNumber,
     addTask,
     getTaskById,
-    removeTask
+    removeTask,
+    initTasksData,
+    updateTasksData
   }
 })

@@ -14,7 +14,7 @@ const theTask = ref(props.task)
 
 function completeTask() {
   theTask.value.isComplete = true
-  emit('completeTask', theTask.value.title, 'The task is now complete')
+  emit('completeTask', theTask.value.title, 'The task is now completed')
 }
 </script>
 

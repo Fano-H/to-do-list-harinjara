@@ -53,14 +53,18 @@ function deleteConfirmation(taskID, titleConfirm, textConfirm) {
 function proceedDeleting() {
   tasksStore.removeTask(idOfTaskToDelete.value)
 }
+
+// function onMounted(() => {
+
+// })
 </script>
 
 <template>
   <div class="tasks-list">
     <div v-if="tasksStore.tasksNumber" class="row">
       <TaskItem
-        v-for="(task, index) in tasksStore.tasks"
-        :key="index"
+        v-for="task in tasksStore.tasks"
+        :key="task.id"
         :task="task"
         @edit-task="openEditModal"
         @complete-task="showMessage"
@@ -70,16 +74,15 @@ function proceedDeleting() {
     <div v-else class="w-75 mx-auto">
       <div class="alert alert-info" role="alert">
         <div class="row">
-        
           <div class="col-12 col-lg-9">
-              <p class="fs-6 text-center">
-                There is no task yet.<br /><br />
-                Create tasks by going on the
-                <RouterLink to="/new-task" class="fw-bold text-decoration-none"
-                  >create new task</RouterLink
-                >
-                panel.
-              </p>
+            <p class="fs-6 text-center">
+              There is no task yet.<br /><br />
+              Create tasks by going on the
+              <RouterLink to="/new-task" class="fw-bold text-decoration-none"
+                >create new task</RouterLink
+              >
+              panel.
+            </p>
           </div>
           <div class="col-12 col-lg-3">
             <div class="d-flex justify-content-center align-items-center fs-1 h-100">
@@ -88,7 +91,6 @@ function proceedDeleting() {
           </div>
         </div>
       </div>
-
     </div>
     <EditModal
       ref="editionModal"

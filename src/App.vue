@@ -1,13 +1,25 @@
 <script setup>
+import { onMounted, watch } from 'vue'
+import { useTasksStore } from './stores/tasks'
 import { RouterLink, RouterView } from 'vue-router'
 import NotCompleteInfo from './components/NotCompleteInfo.vue'
+
+const tasksStore = useTasksStore()
+
+onMounted(() => {
+  tasksStore.initTasksData()
+})
+
+watch(tasksStore, () => {
+  tasksStore.updateTasksData()
+})
 </script>
 
 <template>
   <header class="header sticky-top">
     <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container">
-        <span class="navbar-brand">To Do Harinjara</span>
+        <RouterLink to="/" class="navbar-brand">To Do Harinjara</RouterLink>
         <NotCompleteInfo></NotCompleteInfo>
         <button
           class="navbar-toggler"
