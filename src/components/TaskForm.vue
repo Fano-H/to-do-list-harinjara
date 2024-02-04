@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { useTasksStore } from '@/stores/tasks'
 import { customAlphabet } from 'nanoid'
 
+const emit = defineEmits(['taskCreated'])
+
 const tasksStore = useTasksStore()
 
 const taskTitle = ref('')
@@ -26,6 +28,7 @@ function recordTask() {
     isComplete: false
   })
   resetForm()
+  emit('taskCreated')
 }
 </script>
 
