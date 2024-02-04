@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useTasksStore } from '@/stores/tasks'
-import {customAlphabet} from 'nanoid'
+import { customAlphabet } from 'nanoid'
 
 const tasksStore = useTasksStore()
 

@@ -1,53 +1,54 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref } from 'vue'
 import { Modal } from 'bootstrap'
 import { useTasksStore } from '@/stores/tasks'
 
 const props = defineProps({
   idOfTaskToEdit: {
-    type: [Number,String],
+    type: [Number, String],
     required: true
   }
 })
 
+const emit = defineEmits(['modalHidden'])
+
 const tasksStore = useTasksStore()
 
-const theTaskToEdit = ref({title:"", details:""})
+const theTaskToEdit = ref({ title: '', details: '' })
 
 /**
  * The modal HTML element
-*/
+ */
 const editModalElement = ref(null)
 
 /**
  * The future modal bs object when mounted
-*/
+ */
 let editModal = null
 
 onMounted(() => {
   editModal = new Modal(editModalElement.value)
 
   editModalElement.value.addEventListener('shown.bs.modal', onModalShown)
-  editModalElement.value.addEventListener('hidden.bs.modal', onModalHide)
-
+  editModalElement.value.addEventListener('hidden.bs.modal', onModalHidden)
 })
 
 function showModal() {
   editModal.show()
 }
 
-function onModalShown(evt){
+function onModalShown() {
   theTaskToEdit.value = tasksStore.getTaskById(props.idOfTaskToEdit).theTask
 }
 
-function onModalHide(){
-  theTaskToEdit.value = {title:"", details:""}
+function onModalHidden() {
+  theTaskToEdit.value = { title: '', details: '' }
+  emit('modalHidden')
 }
 
 defineExpose({
   showModal
 })
-
 </script>
 
 <template>
@@ -61,16 +62,27 @@ defineExpose({
         </div>
         <div class="modal-body">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="titleField" v-model.lazy="theTaskToEdit.title">
+            <input
+              type="text"
+              class="form-control"
+              id="titleField"
+              v-model.lazy="theTaskToEdit.title"
+            />
             <label for="titleField">Title</label>
           </div>
           <div class="form-floating">
-            <textarea class="form-control" id="detailsField" v-model.lazy="theTaskToEdit.details"></textarea>
+            <textarea
+              class="form-control"
+              id="detailsField"
+              v-model.lazy="theTaskToEdit.details"
+            ></textarea>
             <label for="detailsField">Details</label>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary mx-auto" data-bs-dismiss="modal">Finish editing and/or close</button>
+          <button type="button" class="btn btn-primary mx-auto" data-bs-dismiss="modal">
+            Finish editing and/or close
+          </button>
         </div>
       </div>
     </div>
@@ -78,7 +90,7 @@ defineExpose({
 </template>
 
 <style scoped>
-  #detailsField{
-    min-height: 100px;
-  }
+#detailsField {
+  min-height: 100px;
+}
 </style>

@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { Modal } from 'bootstrap'
 
-const props = defineProps({
+defineProps({
   messageTitle: {
     type: String,
     required: true
@@ -13,15 +13,14 @@ const props = defineProps({
   }
 })
 
-
 /**
  * The modal HTML element
-*/
+ */
 const messageModalElement = ref(null)
 
 /**
  * The future modal bs object when mounted
-*/
+ */
 let messageModal = null
 
 onMounted(() => {
@@ -35,7 +34,6 @@ function showModal() {
 defineExpose({
   showModal
 })
-
 </script>
 
 <template>
@@ -44,7 +42,7 @@ defineExpose({
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5">{{messageTitle}}</h1>
+          <h1 class="modal-title fs-5">{{ messageTitle }}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -58,6 +56,4 @@ defineExpose({
   </div>
 </template>
 
-<style scoped>
- 
-</style>
+<style scoped></style>

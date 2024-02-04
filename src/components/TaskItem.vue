@@ -1,6 +1,5 @@
 <script setup>
-import { ref } from 'vue';
-import { useTasksStore } from '@/stores/tasks'
+import { ref } from 'vue'
 
 const props = defineProps({
   task: {
@@ -9,17 +8,14 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['editTask', 'completeTask'])
-
-const tasksStore = useTasksStore()
+const emit = defineEmits(['editTask', 'completeTask', 'deleteTask'])
 
 const theTask = ref(props.task)
 
-function completeTask(){
+function completeTask() {
   theTask.value.isComplete = true
   emit('completeTask', theTask.value.title, 'The task is now complete')
 }
-
 </script>
 
 <template>
@@ -34,10 +30,34 @@ function completeTask(){
           <button class="btn btn-secondary btn-sm me-2 px-4" @click="$emit('editTask', task.id)">
             Edit
           </button>
-          <button class="btn btn-primary btn-sm me-2 px-4" @click="completeTask">Complete</button>
-          <button class="btn btn-dark btn-sm px-4">Delete</button>
+          <button
+            class="btn btn-primary btn-sm me-2 px-4"
+            @click="completeTask"
+            :disabled="task.isComplete"
+          >
+            Complete
+          </button>
+          <button
+            class="btn btn-dark btn-sm px-4"
+            @click="
+              $emit(
+                'deleteTask',
+                task.id,
+                'Delete ' + task.title,
+                'Are you sure to delete this task?'
+              )
+            "
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.btn:disabled {
+  opacity: 0.3;
+}
+</style>
