@@ -23,7 +23,7 @@ function completeTask() {
     <div class="card">
       <div class="card-header">{{ task.title }}</div>
       <div class="card-body">
-        <p class="card-text">
+        <p class="card-text details-content">
           {{ task.details }}
         </p>
         <div class="text-start">
@@ -35,7 +35,7 @@ function completeTask() {
             @click="completeTask"
             :disabled="task.isComplete"
           >
-            Complete
+            {{ task.isComplete ? "Completed" : "Complete" }}
           </button>
           <button
             class="btn btn-dark btn-sm px-4"
@@ -59,5 +59,9 @@ function completeTask() {
 <style scoped>
 .btn:disabled {
   opacity: 0.3;
+}
+
+.details-content{
+  white-space: pre-line
 }
 </style>

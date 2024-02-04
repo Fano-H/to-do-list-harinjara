@@ -57,7 +57,7 @@ function proceedDeleting() {
 
 <template>
   <div class="tasks-list">
-    <div class="row">
+    <div v-if="tasksStore.tasksNumber" class="row">
       <TaskItem
         v-for="(task, index) in tasksStore.tasks"
         :key="index"
@@ -66,6 +66,14 @@ function proceedDeleting() {
         @complete-task="showMessage"
         @delete-task="deleteConfirmation"
       ></TaskItem>
+    </div>
+    <div v-else class="w-50 mx-auto">
+      <div class="alert alert-info" role="alert">
+        <p class="fs-6 text-center">
+          There is no task yet.<br><br>
+          Create tasks by going on the <RouterLink to="/new-task" class="fw-bold text-decoration-none">create new task</RouterLink> panel.
+        </p>
+      </div>
     </div>
     <EditModal
       ref="editionModal"
