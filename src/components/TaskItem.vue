@@ -46,7 +46,10 @@ function completeAndUncompleteTask() {
           {{ task.details }}
         </p>
         <div class="text-start">
-          <button class="btn btn-secondary btn-sm me-1 px-3 mt-2" @click="$emit('editTask', task.id)">
+          <button
+            class="btn btn-secondary btn-sm me-1 px-3 mt-2"
+            @click="$emit('editTask', task.id)"
+          >
             <font-awesome-icon icon="edit" /> Edit
           </button>
           <button
