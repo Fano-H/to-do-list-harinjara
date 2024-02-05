@@ -12,6 +12,10 @@ The app requires the following stack to be run
 - Npm 9.x or Yarn 1.x
 
 ## Run
+_ Run `npm install` first
+
+### then :
+
 _ To run the app in dev mode, execute the following command in a terminal console :
 `npm run dev` if you use npm.
 Or `yarn dev` if you use yarn.
