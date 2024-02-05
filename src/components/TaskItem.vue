@@ -27,14 +27,14 @@ function completeAndUncompleteTask() {
 </script>
 
 <template>
-  <div class="col-4 mb-3">
+  <div class="col-sm-6 col-lg-4 mb-3">
     <div class="card">
       <div class="card-header">
         <div class="row">
-          <div class="col-12 col-md-10">
+          <div class="col-10">
             {{ task.title }}
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-2">
             <div v-if="task.isComplete" class="text-end fs-5 text-success">
               <font-awesome-icon icon="check-circle" />
             </div>
@@ -46,18 +46,18 @@ function completeAndUncompleteTask() {
           {{ task.details }}
         </p>
         <div class="text-start">
-          <button class="btn btn-secondary btn-sm me-1 px-3" @click="$emit('editTask', task.id)">
+          <button class="btn btn-secondary btn-sm me-1 px-3 mt-2" @click="$emit('editTask', task.id)">
             <font-awesome-icon icon="edit" /> Edit
           </button>
           <button
-            class="btn btn-primary btn-sm me-1 px-3"
+            class="btn btn-primary btn-sm me-1 px-3 mt-2"
             :class="{ 'is-complete': task.isComplete }"
             @click="completeAndUncompleteTask"
           >
             <font-awesome-icon icon="check" /> {{ task.isComplete ? 'Completed' : 'Complete' }}
           </button>
           <button
-            class="btn btn-dark btn-sm px-3"
+            class="btn btn-dark btn-sm px-3 mt-2"
             @click="
               $emit(
                 'deleteTask',
