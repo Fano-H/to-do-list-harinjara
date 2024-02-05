@@ -7,9 +7,19 @@ import {
   faClose,
   faTasks,
   faPenToSquare,
-  faInfoCircle
+  faInfoCircle,
+  faCheckCircle
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faEdit, faCheck, faDeleteLeft, faClose, faTasks, faPenToSquare, faInfoCircle)
+library.add(
+  faEdit,
+  faCheck,
+  faDeleteLeft,
+  faClose,
+  faTasks,
+  faPenToSquare,
+  faInfoCircle,
+  faCheckCircle
+)
 
 export default FontAwesomeIcon

@@ -67,7 +67,7 @@ function proceedDeleting() {
         :key="task.id"
         :task="task"
         @edit-task="openEditModal"
-        @complete-task="showMessage"
+        @complete-and-uncomplete-task="showMessage"
         @delete-task="deleteConfirmation"
       ></TaskItem>
     </div>

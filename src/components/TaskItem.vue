@@ -8,20 +8,39 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['editTask', 'completeTask', 'deleteTask'])
+const emit = defineEmits(['editTask', 'completeAndUncompleteTask', 'deleteTask'])
 
 const theTask = ref(props.task)
 
-function completeTask() {
-  theTask.value.isComplete = true
-  emit('completeTask', theTask.value.title, 'The task is now completed')
+function completeAndUncompleteTask() {
+  let msg = ''
+
+  if (!theTask.value.isComplete) {
+    theTask.value.isComplete = true
+    msg = 'The task is now completed'
+  } else {
+    theTask.value.isComplete = false
+    msg = 'The task is now NOT completed'
+  }
+  emit('completeAndUncompleteTask', theTask.value.title, msg)
 }
 </script>
 
 <template>
   <div class="col-4 mb-3">
     <div class="card">
-      <div class="card-header">{{ task.title }}</div>
+      <div class="card-header">
+        <div class="row">
+          <div class="col-12 col-md-10">
+            {{ task.title }}
+          </div>
+          <div class="col-12 col-md-2">
+            <div v-if="task.isComplete" class="text-end fs-5 text-success">
+              <font-awesome-icon icon="check-circle" />
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card-body">
         <p class="card-text details-content">
           {{ task.details }}
@@ -32,8 +51,8 @@ function completeTask() {
           </button>
           <button
             class="btn btn-primary btn-sm me-1 px-3"
-            @click="completeTask"
-            :disabled="task.isComplete"
+            :class="{ 'is-complete': task.isComplete }"
+            @click="completeAndUncompleteTask"
           >
             <font-awesome-icon icon="check" /> {{ task.isComplete ? 'Completed' : 'Complete' }}
           </button>
@@ -59,6 +78,10 @@ function completeTask() {
 <style scoped>
 .btn:disabled {
   opacity: 0.3;
+}
+
+.btn.is-complete {
+  background-color: #31c144;
 }
 
 .details-content {
