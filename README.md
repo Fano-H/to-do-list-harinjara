@@ -1,35 +1,20 @@
-# to-do-list-harinjara
+# To do list feature
+#### by Harinjara
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a to do list app that allows to create tasks to do, to list them and to handle whether they are done or not done yet.
 
-## Recommended IDE Setup
+This is made with VUE 3.
+It makes use of __Vue 3__, __Pinia__ as store managment and __Vue Router__
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Requirement
+The app requires the following stack to be run
+- Node 18.x 
+- Npm 9.x or Yarn 1.x
 
-## Customize configuration
+## Run
+_ To run the app in dev mode, execute the following command in a terminal console :
+`npm run dev` if you use npm.
+Or `yarn dev` if you use yarn.
+And then a localhost address will be provided to acces the app.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+_ To run in prod mode, do `npm run build` or `yarn build` and launch file in the folder `dist` onto a server you want.
